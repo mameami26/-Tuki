@@ -1,0 +1,84 @@
+      <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book your flight</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/foundation-sites@6.8.1/dist/css/foundation.min.css"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./ASSETS/style.css" />
+  </head>
+  <body>
+    <div class="form">
+      <img src="./ASSETS/logo.png" alt="" width="500px">
+      <form id="flightForm">
+        <div class="grid-container">
+          <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+              <label>
+                From:
+                <input
+                  type="text"
+                  id="origin"
+                  placeholder="Select your Origin"
+                  required
+                />
+              </label>
+            </div>
+            <div class="medium-6 cell">
+              <label>
+                To:
+                <input
+                  type="text"
+                  id="destination"
+                  placeholder="Select Your Destination"
+                  required
+                />
+              </label>
+            </div>
+            <div class="medium-6 cell">
+              <label>
+                Depart:
+                <input type="date" id="departDate" required />
+              </label>
+            </div>
+            <div class="medium-6 cell">
+              <label>
+               Return:
+                <input type="date" id="returnDate" />
+              </label>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="button">
+           Book Your Flight Here! 
+        </button>
+      </form>
+
+
+
+  <button type="button" class="button expanded" data-open="searchHistoryModal">
+  Search History
+  </button>
+</div>
+</div>
+</div>
+</div>
+<div class="reveal" id="searchHistoryModal" data-reveal>
+<h2>Search History</h2>
+<ul id="historyList">
+<!-- Search history items will be added here dynamically -->
+</ul>
+<button class="close-button" data-close aria-label="Close modal" type="button">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.8.1/dist/js/foundation.min.js" crossorigin="anonymous"></script>
+  
+    <script src="./ASSETS/index.js"></script>
+  </body>
+</html>
