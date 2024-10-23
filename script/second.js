@@ -1,5 +1,5 @@
-// const access_key = 'ab668de2367deb17548466790b816817';
-const weatherAPIKey = '17cd4a58c8db541af2808d42a71e58b4';
+const access_key = 'ab668de2367deb17548466790b816817';
+const weatherAPIKey = '9d03b74520msh4dde0b7de087279p1db39djsn458074310cff';
 
 window.addEventListener("load", async function () {
   const params = new URLSearchParams(window.location.search);
