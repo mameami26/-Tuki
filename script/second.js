@@ -41,7 +41,7 @@ window.addEventListener("load", async function () {
   };
   
   const fetchFlightInfo = async () => {
-    const baseURL = "http://api.aviationstack.com/v1/flights";
+    const baseURL = "https://api.aviationstack.com/v1/flights";
     const params = new URLSearchParams();
     params.append("access_key", access_key);
     const limit = 100;
