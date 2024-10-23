@@ -1,9 +1,9 @@
-      <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Book your flight</title>
+    <title>Book Your Flight</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/foundation-sites@6.8.1/dist/css/foundation.min.css"
@@ -12,31 +12,44 @@
     <link rel="stylesheet" href="./ASSETS/style.css" />
   </head>
   <body>
+    <!-- Navbar -->
+    <nav class="top-bar">
+      <div class="top-bar-left">
+        <img src="/ASSETS/image/logo.png" alt="Logo" />
+      </div>
+      <div class="top-bar-right">
+      <button type="button" class="button" data-open="aboutMeModal">
+        About Me
+      </button>
+        <button type="button" class="button" data-open="joinModal">Join Now</button>
+      </div>
+    </nav>
+
+    <!-- About Me Modal -->
+    <div class="reveal" id="aboutMeModal" data-reveal>
+      <h2>About Me</h2>
+      <p>Welcome to our flight booking service! We provide the best rates for your travel needs. Let's get you to your next destination seamlessly.</p>
+      <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <!-- Main Content -->
     <div class="form">
-      <img src="./ASSETS/logo.png" alt="" width="500px">
+      <h1>Find Your Next Flight</h1>
       <form id="flightForm">
         <div class="grid-container">
           <div class="grid-x grid-padding-x">
             <div class="medium-6 cell">
               <label>
                 From:
-                <input
-                  type="text"
-                  id="origin"
-                  placeholder="Select your Origin"
-                  required
-                />
+                <input type="text" id="origin" placeholder="Select your Origin" required />
               </label>
             </div>
             <div class="medium-6 cell">
               <label>
                 To:
-                <input
-                  type="text"
-                  id="destination"
-                  placeholder="Select Your Destination"
-                  required
-                />
+                <input type="text" id="destination" placeholder="Select Your Destination" required />
               </label>
             </div>
             <div class="medium-6 cell">
@@ -47,38 +60,58 @@
             </div>
             <div class="medium-6 cell">
               <label>
-               Return:
+                Return:
                 <input type="date" id="returnDate" />
               </label>
             </div>
           </div>
         </div>
-        <button type="submit" class="button">
-           Book Your Flight Here! 
-        </button>
+        <button type="submit" class="button expanded">Book Your Flight!</button>
       </form>
 
+      <!-- Search History Button -->
+      <button type="button" class="button expanded" data-open="searchHistoryModal">
+        Search History
+        </button>
+      <div class="reveal" id="searchHistoryModal" data-reveal>
+      <h2>Search History</h2>
+      <ul id="historyList">
+      <!-- Search history items will be added here dynamically -->
+      </ul>
+      <button class="close-button" data-close aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+      </button>
+      </div>
 
+    <!-- Videos of Popular Destinations -->
+    <h2 class="destination">Popular Destinations</h2>
+    <div class="image-collage">
+      <img src="/ASSETS/image/Senegal.png" alt="Senegal" />
+      <img src="/ASSETS/image/USA.png" alt="USA" />
+      <img src="/ASSETS/image/Paris.png" alt="France" />
+      <img src="/ASSETS/image/Canada.png" alt="Canada" />
+  </div>
+    <!-- Footer -->
+    <footer>
+      <div class="grid-container">
+        <div class="grid-x grid-padding-x align-center">
+          <div class="cell medium-6">
+            <p>&copy; 2024 - Created by Your Company</p>
+          </div>
+          <div class="cell medium-6">
+            <ul class="menu align-right">
+              <li><a href="https://www.instagram.com/mameami26/">Instagram</a></li>
+              <li><a href="https://www.linkedin.com/in/aminata-mameami-sall/">LinkedIn</a></li>
+              <li><a href="mailto:mameami26@gmail.com">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
 
-  <button type="button" class="button expanded" data-open="searchHistoryModal">
-  Search History
-  </button>
-</div>
-</div>
-</div>
-</div>
-<div class="reveal" id="searchHistoryModal" data-reveal>
-<h2>Search History</h2>
-<ul id="historyList">
-<!-- Search history items will be added here dynamically -->
-</ul>
-<button class="close-button" data-close aria-label="Close modal" type="button">
-<span aria-hidden="true">&times;</span>
-</button>
-</div>
+    <!-- JS Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.8.1/dist/js/foundation.min.js" crossorigin="anonymous"></script>
-  
-    <script src="./ASSETS/index.js"></script>
+    <script src="./script/index.js"></script>
   </body>
 </html>

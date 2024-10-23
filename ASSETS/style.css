@@ -1,136 +1,109 @@
 body {
-  background-image: url(periwinkle\ circular\ gradient\ background.jpg);
-  background-size: 100%;
   font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  background-color: #f4f4f4;
+  color: #333;
   margin: 0;
   padding: 0;
 }
 
-.image {
-  max-width: 100%;
-  height: auto;
-}
-
-header {
-  background-color: #CCCCFF;
+.top-bar {
+  background-color: #07689F;
   color: white;
-  padding: 1rem;
-  text-align: center;
 }
 
-header h1 {
-  margin: 0;
+.top-bar-left img {
+  height: 60px;
+  width: 150px;
+  margin: 10px;
 }
 
-header button {
-  background-color: #CCCCFF;
-  border: none;
-  color: white;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-header button a {
-  color: white;
-  text-decoration: none;
-}
-
-header button:hover {
-  background-color: #CCCCFF;
-}
-
-/* Form Styles */
-.form {
-  background-color: #d2d6fd;
-  margin: 2rem auto;
-  padding: 2rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
-}
-
-.form label {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-img {
-
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 2.5rem;
-  }
-
-.form input[type="text"],
-.form input[type="date"] {
-  width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.form button {
-  display: block;
-  width: 100%;
-  padding: 1rem;
-  background-color: #6d7af9;
-  border: none;
-  color: white;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.form button:hover {
-  background-color: #665fd1;
-}
-
-/* Flight and Weather Info Styles */
-
-main {
+.top-bar .button {
   background-color: white;
-  padding: 2rem;
-  margin: 1rem;
-  max-width: 800px;
-  width: 100%;
+  color: #007BFF;
+  cursor: pointer;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+.top-bar .button:hover {
+  background-color: #0056b3;
+  color: white;
+}
+
+.form {
+  padding: 20px;
+  text-align: center;
+  background-color: white;
+  margin: 20px;
+  border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-}
-h2 {
-  border-bottom: 2px solid #0078e7;
-  padding-bottom: 0.5rem;
-  color: #333;
 }
 
-#flightDetails,
-#weatherDetails {
-  white-space: pre-wrap;
-  background-color: #f9f9f9;
-  padding: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-top: 1rem;
+button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
+button:hover {
+  background-color: #0056b3;
+}
 
-@media screen and (max-width: 600px) {
-  header {
-    padding: 10px;
+/* .destination-img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+} */
+.image-collage {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 1200px;
+}
+.image-collage img {
+  align-items: center;
+  width: 45%;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+footer {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  
+}
+
+footer a {
+  color: #007BFF;
+  margin-right: 10px;
+  
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+.destination{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 1200px;
+}
+/* Responsive design */
+@media (max-width: 768px) {
+  header img {
+    height: 40px;
   }
 
-  footer {
-    padding: 10px;
+  .button {
+    margin-bottom: 20px;
   }
-}
 
-.reveal.custom-modal {
-  width: 80%; /* Custom width */
-  max-width: none; /* Disable max-width */
-  height: 20px; /* Custom height */
-  margin: auto; /* Center the modal */
+  h2 {
+    font-size: 1.5rem;
+  }
 }

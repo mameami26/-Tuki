@@ -2,15 +2,28 @@ body{
   background: url(./Screenshot\ 2024-05-22\ 200201.png);
   background-size: 100%;
 }
+.top-bar {
+  background-color: #07689F;
+  color: white;
+}
 
-main{
-  background-color: #BDE0FE;
-    padding: 2rem;
-    margin: 1rem;
-    max-width:90%;
-    width: 100%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+.top-bar-left img {
+  height: 60px;
+  width: 150px;
+  margin: 10px;
+}
+
+.top-bar .button {
+  background-color: white;
+  color: #007BFF;
+  cursor: pointer;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+.top-bar .button:hover {
+  background-color: #0056b3;
+  color: white;
 }
  h2 {
   border-bottom: 2px solid #610400;
@@ -29,9 +42,168 @@ header{
   
 }
 header button a {
-color: white;
+color: #007BFF;
 }
 
 header button a:hover {
-color: white;
+color: rgb(10, 9, 9);
+}
+footer {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+footer a {
+  color: #007BFF;
+  margin: 10px;
+  
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+/* Flight and Weather Information Section */
+.flight-item, .weather-item {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.flight-item h3, .weather-item h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Flight Information Structure */
+.flight-times {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.flight-times .time {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.flight-times .duration {
+  color: #888;
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+.flight-route {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.flight-airlines {
+  color: #888;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.flight-airlines i {
+  margin-right: 5px;
+  color: #3498db;
+}
+
+.flight-details {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* Weather Information Structure */
+.weather-times {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.weather-times .temp {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.weather-description {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.weather-details {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.weather-icon {
+  margin-right: 10px;
+  color: #3498db;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .inline-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section-inline {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}
+
+/* Modal styling */
+#contactModal {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 100%;
+}
+
+#contactModal h2 {
+  margin-bottom: 20px;
+}
+
+#contactModal input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#contactModal .button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#contactModal .button:hover {
+  background-color: #2980b9;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
 }

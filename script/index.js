@@ -1,4 +1,4 @@
-document.getElementById('flightForm').addEventListener('submit', function (e) {
+  document.getElementById('flightForm').addEventListener('submit', function (e) {
   e.preventDefault();
 
   const origin = document.getElementById('origin').value;
@@ -62,4 +62,22 @@ function populateSearchHistory() {
 // Show search history modal
 $('[data-open="searchHistoryModal"]').on('click', function() {
   populateSearchHistory();
+});
+
+$(document).ready(function() {
+  // Initialize Foundation
+  $(document).foundation();
+
+  // About Me Modal
+  const aboutMeModal = new Foundation.Reveal($('#aboutMeModal'));
+
+  // Open modal when About Me button is clicked
+  $('button[data-open="aboutMeModal"]').on('click', function() {
+    aboutMeModal.open();
+  });
+
+  // Close modal when the close button is clicked
+  $('#aboutMeModal .close-button').on('click', function() {
+    aboutMeModal.close();
+  });
 });

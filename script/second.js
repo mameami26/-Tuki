@@ -1,5 +1,5 @@
-const access_key = 'ab668de2367deb17548466790b816817';
-const weatherAPIKey = 'ef6e1f7186mshf7d03c1551b8febp1f1503jsn6c210dac1235';
+// const access_key = 'ab668de2367deb17548466790b816817';
+const weatherAPIKey = '17cd4a58c8db541af2808d42a71e58b4';
 
 window.addEventListener("load", async function () {
   const params = new URLSearchParams(window.location.search);
@@ -7,61 +7,44 @@ window.addEventListener("load", async function () {
   const destination = params.get("destination");
   const departDate = params.get("departDate");
   const returnDate = params.get("returnDate");
+  
 
   // First API that gives original sky, destination, date of travel and return, and the prices from AVIATIONSTACK.\
-  const displayFlightInfo = (data) => {
+  const displayFlightInfo = (flightData) => {
     const flightDetailsElement = document.getElementById("flightDetails");
-    flightDetailsElement.innerHTML = `                                   
-                                      <div class="grid-container">
-                                        <div class="grid-x grid-margin-x align-center">
-                                          <div class="cell small-12 medium-6 large-6">
-                                              <div class="card">
-                                                  <div class="card-section">
-                                                    <p>Origin: ${origin}</p>
-                                                    <p>Destination: ${destination}</p>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="cell small-12 medium-6 large-6">
-                                              <div class="card">
-                                                  <div class="card-section">
-                                                    <p>Departure Date: ${departDate}</p>
-                                                    <p>Return Date: ${returnDate}</p>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="grid-container">
-                                        <div class="grid-x grid-margin-x align-center">
-
-                                          ${data
-                                            .map(
-                                              (flight) =>
-                                                `<div class="cell small-12 medium-4 large-4">
-                                                      <div class="card border">
-                                                          <div class="card-section">
-                                                              <p> <span>Flight Date</span>: ${flight.flight_date}</p>
-                                                              <p> <span>Flight Number</span>: ${flight.flight.number}</p>
-                                                              <p> <span>Departure Airport</span>: ${flight.departure.airport}</p>
-                                                              <p> <span>Arrival Airport</span>: ${flight.arrival.airport}</p>
-                                                              <p> <span>Airline</span>: ${flight.airline.name}</p>
-                                                          </div>
-                                                      </div>
-
-                                            </div>`
-                                            )
-                                            .join("")}
-
-                                        </div>
-                                      </div>
-                                      `;
+    
+    flightDetailsElement.innerHTML = flightData.map(flight => `
+      <div class="flight-item">
+        <div class="flight-times">
+          <div class="time">
+            ${flight.departure.scheduled ? new Date(flight.departure.scheduled).toLocaleTimeString() : 'Unknown'} 
+            - 
+            ${flight.arrival.scheduled ? new Date(flight.arrival.scheduled).toLocaleTimeString() : 'Unknown'}
+          </div>
+          <div class="duration">${flight.flight_status} on ${flight.flight_date}</div>
+        </div>
+        <div class="flight-route">
+          ${flight.departure.airport || 'Unknown Airport'} (${flight.departure.iata || 'Unknown IATA'}) 
+          - 
+          ${flight.arrival.airport || 'Unknown Airport'} (${flight.arrival.iata || 'Unknown IATA'})
+        </div>
+        <div class="flight-airlines">
+          <i class="fas fa-plane"></i> ${flight.airline.name || 'Unknown Airline'}
+        </div>
+        <div class="flight-details">
+          Departure at: ${flight.departure.scheduled ? new Date(flight.departure.scheduled).toLocaleString() : 'Unknown'} 
+          <br>
+          Arrival at: ${flight.arrival.scheduled ? new Date(flight.arrival.scheduled).toLocaleString() : 'Unknown'}
+        </div>
+      </div>
+    `).join('');
   };
+  
   const fetchFlightInfo = async () => {
     const baseURL = "http://api.aviationstack.com/v1/flights";
     const params = new URLSearchParams();
     params.append("access_key", access_key);
-    const limit = 3;
+    const limit = 100;
     params.append("limit", limit.toString());
 
     const url = new URL(baseURL);
@@ -91,16 +74,28 @@ window.addEventListener("load", async function () {
     }
   };
   // Second API that displays the weather from Open Weather.
-  const displayWeatherInfo = (weather) => {
+  const displayWeatherInfo = (weatherData) => {
     const weatherDetailsElement = document.getElementById("weatherDetails");
-    weatherDetailsElement.innerHTML = `<div class="card">
-                                          <div class="card-section">
-                                            <h4>Weather in ${weather.name}</h4>
-                                            <p>Temperature: ${weather.main.temp}°C</p>
-                                            <p>Weather: ${weather.weather[0].description}</p>
-                                          </div>
-                                        </div>`;
+  
+    weatherDetailsElement.innerHTML = `
+      <div class="weather-item">
+        <h3>Weather in ${weatherData.name}, ${weatherData.sys.country}</h3>
+        <div class="weather-times">
+          <div class="temp">Temperature: ${weatherData.main.temp}°F</div>
+          <div class="feels-like">Feels Like: ${weatherData.main.feels_like}°F</div>
+        </div>
+        <div class="weather-description">
+          ${weatherData.weather[0].description} (${weatherData.weather[0].main})
+        </div>
+        <div class="weather-details">
+          Humidity: ${weatherData.main.humidity}% <br>
+          Wind Speed: ${weatherData.wind.speed} m/s <br>
+          Visibility: ${weatherData.visibility} meters
+        </div>
+      </div>
+    `;
   };
+  
 
   const fetchWeatherInfo = async (destination) => {
     const url2 = `https://open-weather13.p.rapidapi.com/city/${destination}/EN`;
@@ -127,10 +122,31 @@ window.addEventListener("load", async function () {
     } catch (error) {
       console.error("Error fetching weather data:", error);
       const weatherDetailsElement = document.getElementById("weatherDetails");
-      weatherDetailsElement.innerHTML =
+      weatherDetailsElement.innerHTML 
         "<p>Error fetching weather information.</p>";
     }
   };
   fetchFlightInfo();
   fetchWeatherInfo(destination);
+});
+
+
+document.getElementById('bookingForm').addEventListener('submit', function(event) {
+  event.preventDefault();  // Prevent default form submission
+  
+  // Get the form values
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const flight = document.getElementById('flight').value;
+  
+  // Construct the mailto link
+  const mailtoLink = `mailto:mameami26@gmail.com?subject=Flight Booking&body=
+    Name: ${encodeURIComponent(name)}%0A
+    Email: ${encodeURIComponent(email)}%0A
+    Phone: ${encodeURIComponent(phone)}%0A
+    Flight: ${encodeURIComponent(flight)}`;
+    
+  // Open the mail client with the constructed mailto link
+  window.location.href = mailtoLink;
 });
